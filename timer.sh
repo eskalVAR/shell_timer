@@ -100,19 +100,14 @@ calculate_remaining_time() {
     esac
   done < "$timer_dir/timer_$timer_id.txt"
 
-  if [ $invert -ne 1 ]; then
-	  if [ $start_time -ne 0 ]; then
-	    current_time=$(date +%s)
-	    remaining_time=$((remaining_time - (current_time - start_time)))
-	  fi
-  else
-	  if [ $start_time -ne 0 ]; then
-	    current_time=$(date +%s)
-	    remaining_time=$((remaining_time - (current_time - start_time)))
-	  fi
-	    remaining_time=$((duration - remaining_time))
+  if [ $start_time -ne 0 ]; then
+    current_time=$(date +%s)
+    remaining_time=$((remaining_time - (current_time - start_time)))
   fi
 
+  if [ $invert -ne 0 ]; then
+    remaining_time=$((duration - remaining_time))
+  fi
 
   if [ $remaining_time -lt 0 ]; then
     remaining_time=0
