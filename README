@@ -1,0 +1,27 @@
+# Description
+Dumb linux shell timer based on text files.
+Places state files in XDG compliant directory by default.
+
+Useful for i3blocks scripts or other tasks.
+
+A new timer id is automatically assigned on timer creation (default if possible is 0).
+
+# Usage
+Create a new 10 minute timer
+timer new 10:00
+
+Pause timer
+timer 0 pause
+
+Restart timer
+timer 0 start
+
+Check status
+timer 0 status
+
+Delete timer
+timer 0 delete
+
+Invert time output (count up rather than down)
+timer 0 status --up
+
